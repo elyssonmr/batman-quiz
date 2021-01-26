@@ -22,8 +22,7 @@ const QuizContainer = styled.div`
   }
 `
 
-
-export default function Home() {
+const Quiz = () => {
   const title = 'Teste seus conhecimentos sobre Batman Arkham Series'
   const description = 'Quiz criado durante a imersão React Next V2'
   return (
@@ -34,25 +33,18 @@ export default function Home() {
         <Widget>
           <Widget.Header>
             Quiz Batman Arkham Series
-          </Widget.Header>
+              </Widget.Header>
           <Widget.Content>
-            <p>{db.description}</p>
-            <p>Qual seu nome?</p>
-            <QuizInput placeholder='Dark Knight' />
-            <QuizButton url='/quiz' text='Começar'/>
-          </Widget.Content>
-        </Widget>
-
-        <Widget>
-          <Widget.Content>
-            <h1>Pontuação</h1>
-
-            <p>Lorem ipsum</p>
+            <h1>Em breve...</h1>
+            <p>Os enigmas do The Riddler ainda estão sendo decifrados. </p>
+            <QuizButton url='/' text='Voltar' />
           </Widget.Content>
         </Widget>
         <Footer />
       </QuizContainer>
-      <GitHubCorner projectUrl='https://github.com/elyssonmr/batman-quiz'/>
+      <GitHubCorner projectUrl='https://github.com/elyssonmr/batman-quiz' />
     </QuizBackground>
   )
 }
+
+export default Quiz
