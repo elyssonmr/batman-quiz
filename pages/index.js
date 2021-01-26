@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Head from 'next/head'
 
 import db from '../db.json'
 import Widget from '../src/components/Widget'
@@ -6,6 +7,9 @@ import Footer from '../src/components/Footer'
 import GitHubCorner from '../src/components/GitHubCorner'
 import QuizBackground from '../src/components/QuizBackground'
 import QuizLogo from '../src/components/QuizLogo'
+import QuizButton from '../src/components/QuizButton'
+import QuizInput from '../src/components/QuizInput'
+import Metadata from '../src/components/Metadata'
 
 
 const Title = styled.h1`
@@ -26,8 +30,11 @@ const QuizContainer = styled.div`
 
 
 export default function Home() {
+  const title = 'Teste seus conhecimentos sobre Batman Arkham Series'
+  const description = 'Quiz criado durante a imersão React Next V2'
   return (
     <QuizBackground backgroundImage={db.bg}>
+      <Metadata title={title} description={description} backgroundUrl={db.bg} />
       <QuizContainer>
         <QuizLogo />
         <Widget>
@@ -35,9 +42,10 @@ export default function Home() {
             Quiz Batman Arkham Series
           </Widget.Header>
           <Widget.Content>
-            <h1>Quiz Batman Arkham Series</h1>
-
-            <p>Lorem ipsum</p>
+            <p>{db.description}</p>
+            <p>Qual seu nome?</p>
+            <QuizInput placeholder='Dark Knight' />
+            <QuizButton url='' text='Começar'/>
           </Widget.Content>
         </Widget>
 
