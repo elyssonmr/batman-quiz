@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Input = styled.input`
   width: 100%;
@@ -9,12 +10,19 @@ const Input = styled.input`
   color: ${({ theme }) => theme.colors.contrastText};
   margin-bottom: 10px;
   font-size: 14px;
-`
+`;
 
+// eslint-disable-next-line react/prop-types
+function QuizInput({ placeholder, type, onChange }) {
+  const inputType = type || 'text';
 
-function QuizInput({placeholder, type}) {
-  type = type ? type : 'text'
-  return <Input placeholder={placeholder} type={type}/>
+  return (
+    <Input
+      placeholder={placeholder}
+      type={inputType}
+      onChange={onChange}
+    />
+  );
 }
 
-export default QuizInput
+export default QuizInput;

@@ -1,8 +1,9 @@
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
-
-const LinkButton = styled.a`
+const StyledButton = styled.button`
   color: #fff;
+  width: 100%;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
@@ -13,11 +14,17 @@ const LinkButton = styled.a`
     opacity: 0.8;
   }
   display: block;
-`
+`;
 
-function QuizButton({url, text}) {
-  return <LinkButton href={url}>{text}</LinkButton>
+// eslint-disable-next-line react/prop-types
+function QuizButton({ text, type, disabled }) {
+  const btnType = type || 'button';
+
+  return (
+    <StyledButton type={btnType} disabled={disabled}>
+      {text}
+    </StyledButton>
+  );
 }
 
-
-export default QuizButton
+export default QuizButton;

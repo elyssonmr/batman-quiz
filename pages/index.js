@@ -1,15 +1,15 @@
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { useRouter } from 'next/router';
 
-import db from '../db.json'
-import Widget from '../src/components/Widget'
-import Footer from '../src/components/Footer'
-import GitHubCorner from '../src/components/GitHubCorner'
-import QuizBackground from '../src/components/QuizBackground'
-import QuizLogo from '../src/components/QuizLogo'
-import QuizButton from '../src/components/QuizButton'
-import QuizInput from '../src/components/QuizInput'
-import Metadata from '../src/components/Metadata'
-
+import db from '../db.json';
+import Widget from '../src/components/Widget';
+import Footer from '../src/components/Footer';
+import GitHubCorner from '../src/components/GitHubCorner';
+import QuizBackground from '../src/components/QuizBackground';
+import QuizLogo from '../src/components/QuizLogo';
+import QuizButton from '../src/components/QuizButton';
+import QuizInput from '../src/components/QuizInput';
 
 const QuizContainer = styled.div`
   width: 100%;
@@ -20,15 +20,17 @@ const QuizContainer = styled.div`
     margin: auto;
     padding: 15px;
   }
-`
-
+`;
 
 export default function Home() {
-  const title = 'Teste seus conhecimentos sobre Batman Arkham Series'
-  const description = 'Quiz criado durante a imersão React Next V2'
+  const [name, setName] = useState('');
+  const router = useRouter();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/quiz?name=${name}`);
+  };
   return (
     <QuizBackground backgroundImage={db.bg}>
-      <Metadata title={title} description={description} backgroundUrl={db.bg} />
       <QuizContainer>
         <QuizLogo />
         <Widget>
@@ -37,9 +39,11 @@ export default function Home() {
           </Widget.Header>
           <Widget.Content>
             <p>{db.description}</p>
-            <p>Qual seu nome?</p>
-            <QuizInput placeholder='Dark Knight' />
-            <QuizButton url='/quiz' text='Começar'/>
+            <form onSubmit={onSubmit}>
+              <p>Qual seu nome?</p>
+              <QuizInput placeholder="Dark Knight" onChange={(e) => setName(e.target.value)} />
+              <QuizButton type="submit" url="/quiz" text="Jogar" disabled={name.length === 0} />
+            </form>
           </Widget.Content>
         </Widget>
 
@@ -52,7 +56,7 @@ export default function Home() {
         </Widget>
         <Footer />
       </QuizContainer>
-      <GitHubCorner projectUrl='https://github.com/elyssonmr/batman-quiz'/>
+      <GitHubCorner projectUrl="https://github.com/elyssonmr/batman-quiz" />
     </QuizBackground>
-  )
+  );
 }
