@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { useRouter } from 'next/router';
 
 import db from '../db.json';
@@ -10,17 +9,7 @@ import QuizBackground from '../src/components/QuizBackground';
 import QuizLogo from '../src/components/QuizLogo';
 import QuizButton from '../src/components/QuizButton';
 import QuizInput from '../src/components/QuizInput';
-
-const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding: 15px;
-  }
-`;
+import QuizContainer from '../src/components/QuizContainer';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -41,7 +30,11 @@ export default function Home() {
             <p>{db.description}</p>
             <form onSubmit={onSubmit}>
               <p>Qual seu nome?</p>
-              <QuizInput placeholder="Dark Knight" onChange={(e) => setName(e.target.value)} />
+              <QuizInput
+                name="nomeDoUsuario"
+                placeholder="Dark Knight"
+                onChange={(e) => setName(e.target.value)}
+              />
               <QuizButton type="submit" url="/quiz" text="Jogar" disabled={name.length === 0} />
             </form>
           </Widget.Content>

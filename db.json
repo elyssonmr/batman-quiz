@@ -1,28 +1,126 @@
 {
   "bg": "https://cdn.pocket-lint.com/r/s/970x/assets/images/151737-games-feature-batman-games-in-order-how-to-play-the-arkham-series-and-more-image1-m8vygjidfb-jpg.webp?v1",
   "title": "Quiz Batman",
-  "description": "Teste os seus conhecimentos sobre os jogos do Batman da série Arkham e vamos ver quantos criminosos serão capturados",
+  "description": "Teste os seus conhecimentos sobre os jogos do Batman da série Arkham e vamos ver quantos criminosos serão capturados. OBS: Pode conter spoilers",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
-      "title": "Como fazer um seletor por id via CSS?",
-      "description": "Essa é pra aquecer",
+      "image": "https://cdn.wccftech.com/wp-content/uploads/2015/06/Batman-1.jpg",
+      "title": "Qual o verdadeiro nome do Batman?",
+      "description": "Então olha quem acabou de aparecer! Você realmente decidiu tentar e responder minhas charadas? Começando agora! Eu estou ansioso para lhe ver falhar.",
       "answer": 2,
       "alternatives": [
-        ".elemento",
-        "*elemento",
-        "#elemento",
-        "%elemento"
+        "Jim Gordon",
+        "Alfred Pennyworth",
+        "Bruce Wayne",
+        "Oswald Cobblepot"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-      "title": "Como fazer um background gradiente com css?",
-      "description": "Faz tempo em haha",
+      "image": "http://www.dicasparacomputador.com/files/u3/batman-arkham-city.jpg",
+      "title": "Qual o nome pro primeiro chefe do jogo Batman: Arkham City?",
+      "description": "Não é possível que você consiga responder essa pergunta, Cavaleiro das Trevas.",
+      "answer": 3,
+      "alternatives": [
+        "Pinguim",
+        "Senhor Frio",
+        "Coringa",
+        "Solomon Grundy"
+      ]
+    },
+    {
+      "image": "https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fbatman-arkham-asylum%2Fhome%2FEGS_WB_Batman_Arkham_Asylum_L1_2560x1440_19_0911-2560x1440-bdfb966b14e5f9bb6a2bf48a148d36566ca96df0.jpg?h=1080&resize=1&w=1920",
+      "title": "Onde o jogo Batman: Arkham Asylum se passa?",
+      "description": "Eu, Edward Nigma, coloquei desafios selecionados por toda Arkham. Você consegue resolver todos? Você encontrará todos meus troféus? Já esta pronto para desistir?",
       "answer": 0,
       "alternatives": [
-         "background: linear-gradient(#e66465, #9198e5);",
-         "background: gradient(#e66465, #9198e5);"
+        "Numa ilha",
+        "Na prisão Blackgate",
+        "Em Central City",
+        "No centro de Gotham"
+      ]
+    },
+    {
+      "image": "https://miro.medium.com/max/700/1*AeLBDGaDcHeNyJ3e-jlAtw.png",
+      "title": "Qual o último chefe do jogo Batman: Arkham Asylum?",
+      "description": "Você esta chegando muito a frente de si mesmo, Batman",
+      "answer": 1,
+      "alternatives": [
+        "Senhor Gelo",
+        "Coringa",
+        "Asa Noturna",
+        "Pinguim"
+      ]
+    },
+    {
+      "image": "https://i.ytimg.com/vi/7i7xVQ3Mf3g/maxresdefault.jpg",
+      "title": "Em qual jogo podemos jogar com o Batmóvel?",
+      "description": "Oi Cavaleiro das Trevas. Achou que essa pergunta fácil? Ela deveria ser",
+      "answer": 3,
+      "alternatives": [
+        "Batman: Arkham Asylum",
+        "Batman: Arkham City",
+        "Batman: Arkham Origins",
+        "Batman: Arkham Knight"
+      ]
+    },
+    {
+      "image": "https://i.redd.it/czg64q0aa4q31.jpg",
+      "title": "Como que o Batman entra dentro da cidade prisão no jogo Batman: Arkham City?",
+      "description": "Acho que esta errado, Cavaleiro das Trevas. Eu suponho que essa seja a sua primeira tentativa.",
+      "answer": 3,
+      "alternatives": [
+        "Ele salta da Batwing no meio da prisão",
+        "Ele entra na prisão planando com sua capa",
+        "Ele entra como Bruce Wayne para depois adquirir sua armadura",
+        "Utilizando o Batmóvel ele abre um buraco na parede da prisão"
+      ]
+    },
+    {
+      "image": "https://townsquare.media/site/622/files/2011/10/batman-arkham-city-catwoman.jpg?w=980&q=75",
+      "title": "Em qual jogo jogamos com a Mulher Gato como uma das personagens principais?",
+      "description": "Esta não será fácil, Cavaleiro das Trevas",
+      "answer": 1,
+      "alternatives": [
+        "Batman: Arkham Asylum",
+        "Batman: Arkham City",
+        "Batman: Arkham Origins",
+        "Batman: Arkham Knight"
+      ]
+    },
+    {
+      "image": "https://i.ytimg.com/vi/o5E9lhDedD0/maxresdefault.jpg",
+      "title": "Qual (ais) jogo (s) que encontramos com o Duas Caras?",
+      "description": "Você conseguiu. Muito bem. Eu teria esperado que uma criança resolvesse essa, olhem para o melhor detetive do mundo.",
+      "answer": 1,
+      "alternatives": [
+        "Batman: Arkham Asylum",
+        "Batman: Arkham City e Batman: Arkham Knight",
+        "Batman: Arkham Origins e Batman: Arkham Asylum",
+        "Batman: Arkham Knight"
+      ]
+    },
+    {
+      "image": "https://static.wikia.nocookie.net/batman/images/4/43/Oracle_%28Arkhamverse%29.jpg/revision/latest/scale-to-width-down/530?cb=20151016142737",
+      "title": "Qual o nome da namorada do Coringa?",
+      "description": "Tudo que você precisa é manter seus olhos no prémio.",
+      "answer": 0,
+      "alternatives": [
+        "Alerquina",
+        "Hera Venenosa",
+        "Mulher Gato",
+        "Vicki Vale"
+      ]
+    },
+    {
+      "image": "https://cdn.mos.cms.futurecdn.net/7bqJ6NTbfosg3BKezHXCDB-970-80.jpg.webp",
+      "title": "Qual o nome do Fundador do manicómio Arkham?",
+      "description": "Ahh.. qual é? Tenho certeza que o grande \"Batman\" consegue resolver essa sem trapacear e olhas as respostas na internet.",
+      "answer": 3,
+      "alternatives": [
+        "Solomon Wayne",
+        "Solomon Grundy",
+        "Harvey Dent",
+        "Amadeus Arkham"
       ]
     }
   ],
