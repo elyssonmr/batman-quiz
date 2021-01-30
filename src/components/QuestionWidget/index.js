@@ -1,10 +1,30 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 import Widget from '../Widget';
 import QuizButton from '../QuizButton';
+
+const AlternativeForm = styled.form`
+  label {
+    &[data-selected="true"] {
+      background-color: ${({ theme }) => theme.colors.primary};
+
+      &[data-status="SUCCESS"] {
+        background-color: ${({ theme }) => theme.colors.success};
+      }
+
+      &[data-status="ERROR"] {
+        background-color: ${({ theme }) => theme.colors.wrong};
+      }
+    }
+    &:focus {
+      opacity: 1;
+    }
+  }
+`;
 
 function QuestionWidget({
   question,
@@ -12,8 +32,11 @@ function QuestionWidget({
   totalQuestions,
   onSubmit,
   setSelectedAnswer,
-  confirmDisabled,
+  hasQuestionSelected,
   name,
+  isCorrect,
+  questionSubmitted,
+  selectedAnswer,
 }) {
   const questionId = `question__${questionIndex}`;
   return (
@@ -34,21 +57,32 @@ function QuestionWidget({
         <p>{`Olá ${name} quero ver se você acerta esse enigma do Charada:`}</p>
         <h1>{question.title}</h1>
         <p>{question.description}</p>
-        <form onSubmit={onSubmit}>
-          {question.alternatives.map((alternative, index) => (
-            <Widget.Topic as="label" key={index}>
-              <input
-                type="radio"
-                name={questionId}
-                value={index}
-                onChange={(e) => { setSelectedAnswer(e.target.value); }}
-              />
-              {' '}
-              {alternative}
-            </Widget.Topic>
-          ))}
-          <QuizButton text="Confirmar" type="submit" disabled={confirmDisabled} />
-        </form>
+        <AlternativeForm onSubmit={onSubmit}>
+          {question.alternatives.map((alternative, index) => {
+            const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR';
+            const isSelected = selectedAnswer === index;
+            return (
+              <Widget.Topic
+                as="label"
+                key={index}
+                data-selected={isSelected}
+                data-status={questionSubmitted && alternativeStatus}
+              >
+                <input
+                  type="radio"
+                  style={{display: 'none'}}
+                  name={questionId}
+                  onChange={() => { setSelectedAnswer(index); }}
+                />
+                {' '}
+                {alternative}
+              </Widget.Topic>
+            )
+          })}
+          <QuizButton text="Confirmar" type="submit" disabled={!hasQuestionSelected} />
+          { questionSubmitted && isCorrect && <p>Parabéns Cavaleiro das Trevas</p>}
+          { questionSubmitted && !isCorrect && <p>Não foi dessa vez Cavaleiro das Trevas</p>}
+        </AlternativeForm>
       </Widget.Content>
     </Widget>
   );
@@ -60,8 +94,10 @@ QuestionWidget.propTypes = {
   totalQuestions: PropTypes.number.isRequired,
   onSubmit: PropTypes.func.isRequired,
   setSelectedAnswer: PropTypes.func.isRequired,
-  confirmDisabled: PropTypes.bool.isRequired,
+  hasQuestionSelected: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
+  isCorrect: PropTypes.bool.isRequired,
+  questionSubmitted: PropTypes.bool.isRequired,
 };
 
 export default QuestionWidget;

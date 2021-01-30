@@ -26,33 +26,37 @@ export default function Quiz() {
   const question = db.questions[questionIndex];
   const [selectedAnswer, setSelectedAnswer] = useState(-1);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [confirmDisabled, setConfirmDisabled] = useState(true);
+  const hasQuestionSelected = selectedAnswer !== undefined;
+  const [questionSubmitted, setQuestionSubmitted] = useState(false);
+  const isCorrect = parseInt(selectedAnswer, 10) === question.answer;
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (parseInt(selectedAnswer, 10) === question.answer) {
+    setQuestionSubmitted(true);
+    if (isCorrect) {
       setCorrectAnswers(correctAnswers + 1);
-      setSelectedAnswer(-1);
     }
     const nextQuestion = questionIndex + 1;
     if (nextQuestion < db.questions.length) {
-      setQuestionIndex(nextQuestion);
+      setTimeout(() => {
+        setQuestionIndex(nextQuestion);
+        setSelectedAnswer(undefined);
+        setQuestionSubmitted(false);
+      }, 2500);
     } else {
-      setScreenState(screenStates.RESULT);
+      setTimeout(() => {
+        setScreenState(screenStates.RESULT);
+        setQuestionSubmitted(false);
+      }, 2500);
     }
-    e.target.reset();
   };
 
   useEffect(() => {
     setTimeout(() => {
       setScreenState(screenStates.LOADED);
     }, 1000);
-    setSelectedAnswer(-1);
+    setSelectedAnswer(undefined);
   }, []);
-
-  useEffect(() => {
-    setConfirmDisabled(selectedAnswer === -1);
-  }, [selectedAnswer]);
 
   return (
     <QuizBackground backgroundImage={db.bg}>
@@ -65,8 +69,11 @@ export default function Quiz() {
             totalQuestions={totalQuestions}
             onSubmit={onSubmit}
             setSelectedAnswer={setSelectedAnswer}
-            confirmDisabled={confirmDisabled}
+            hasQuestionSelected={hasQuestionSelected}
             name={name}
+            questionSubmitted={questionSubmitted}
+            isCorrect={isCorrect}
+            selectedAnswer={selectedAnswer}
           />
         )}
         {screenState === screenStates.LOADING && <LoadingWidget />}
