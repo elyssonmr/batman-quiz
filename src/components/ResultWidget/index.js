@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Widget from '../Widget';
+import BackLinkArrow from '../BackLinkArrow';
 
 function ResultWidget({ correctAnswers, name }) {
   let title = '';
@@ -20,12 +21,13 @@ function ResultWidget({ correctAnswers, name }) {
       message = `Você acertou ${correctAnswers} questão`;
     }
   } else {
-    message = `Os enigmas do Charada são difíceis de decifrar. Tenha mais cuidado na próxima vez ${name}`;
+    message = `Nem sempre as perguntas são fáceis. Tenha mais sorte na próxima vez ${name}`;
   }
 
   return (
     <Widget>
       <Widget.Header>
+        <BackLinkArrow href="/" />
         <h3>{title}</h3>
       </Widget.Header>
       <Widget.Content>

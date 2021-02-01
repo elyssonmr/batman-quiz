@@ -125,7 +125,8 @@
     }
   ],
   "external": [
-    ""
+    "https://aluraquizpokemon.cesarrobertopg.vercel.app/",
+    "https://bibliaquiz.prscreis.vercel.app/"
   ],
   "theme": {
     "colors": {

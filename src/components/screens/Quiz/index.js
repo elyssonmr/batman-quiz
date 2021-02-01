@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import PropTypes from 'prop-types';
 
-import db from '../db.json';
-import Footer from '../src/components/Footer';
-import GitHubCorner from '../src/components/GitHubCorner';
-import QuizBackground from '../src/components/QuizBackground';
-import QuizLogo from '../src/components/QuizLogo';
-import QuizContainer from '../src/components/QuizContainer';
-import LoadingWidget from '../src/components/LoadingWidget';
-import QuestionWidget from '../src/components/QuestionWidget';
-import ResultWidget from '../src/components/ResultWidget';
+import Footer from '../../Footer';
+import GitHubCorner from '../../GitHubCorner';
+import QuizBackground from '../../QuizBackground';
+import QuizLogo from '../../QuizLogo';
+import QuizContainer from '../../QuizContainer';
+import LoadingWidget from '../../LoadingWidget';
+import QuestionWidget from '../../QuestionWidget';
+import ResultWidget from '../../ResultWidget';
 
 const screenStates = {
   LOADING: 'LOADING',
@@ -17,13 +17,13 @@ const screenStates = {
   RESULT: 'RESULT',
 };
 
-export default function Quiz() {
+export default function QuizScreen({ questions, background }) {
   const router = useRouter();
   const [screenState, setScreenState] = useState(screenStates.LOADING);
   const { name } = router.query;
-  const totalQuestions = db.questions.length;
+  const totalQuestions = questions.length;
   const [questionIndex, setQuestionIndex] = useState(0);
-  const question = db.questions[questionIndex];
+  const question = questions[questionIndex];
   const [selectedAnswer, setSelectedAnswer] = useState(-1);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const hasQuestionSelected = selectedAnswer !== undefined;
@@ -37,7 +37,7 @@ export default function Quiz() {
       setCorrectAnswers(correctAnswers + 1);
     }
     const nextQuestion = questionIndex + 1;
-    if (nextQuestion < db.questions.length) {
+    if (nextQuestion < totalQuestions) {
       setTimeout(() => {
         setQuestionIndex(nextQuestion);
         setSelectedAnswer(undefined);
@@ -59,7 +59,7 @@ export default function Quiz() {
   }, []);
 
   return (
-    <QuizBackground backgroundImage={db.bg}>
+    <QuizBackground backgroundImage={background}>
       <QuizContainer>
         <QuizLogo />
         {screenState === screenStates.LOADED && (
@@ -86,3 +86,8 @@ export default function Quiz() {
     </QuizBackground>
   );
 }
+
+QuizScreen.propTypes = {
+  questions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  background: PropTypes.string.isRequired,
+};

@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 
 import Widget from '../Widget';
 import QuizButton from '../QuizButton';
+import BackLinkArrow from '../BackLinkArrow';
 
 const AlternativeForm = styled.form`
   label {
@@ -33,7 +34,6 @@ function QuestionWidget({
   onSubmit,
   setSelectedAnswer,
   hasQuestionSelected,
-  name,
   isCorrect,
   questionSubmitted,
   selectedAnswer,
@@ -42,6 +42,7 @@ function QuestionWidget({
   return (
     <Widget>
       <Widget.Header>
+        <BackLinkArrow href="/" />
         <h3>{`Pergunta ${questionIndex + 1} de ${totalQuestions}`}</h3>
       </Widget.Header>
       <img
@@ -54,7 +55,6 @@ function QuestionWidget({
         src={question.image}
       />
       <Widget.Content>
-        <p>{`Olá ${name} quero ver se você acerta esse enigma do Charada:`}</p>
         <h1>{question.title}</h1>
         <p>{question.description}</p>
         <AlternativeForm onSubmit={onSubmit}>
@@ -70,18 +70,17 @@ function QuestionWidget({
               >
                 <input
                   type="radio"
-                  style={{display: 'none'}}
+                  style={{ display: 'none' }}
                   name={questionId}
                   onChange={() => { setSelectedAnswer(index); }}
                 />
-                {' '}
                 {alternative}
               </Widget.Topic>
-            )
+            );
           })}
           <QuizButton text="Confirmar" type="submit" disabled={!hasQuestionSelected} />
-          { questionSubmitted && isCorrect && <p>Parabéns Cavaleiro das Trevas</p>}
-          { questionSubmitted && !isCorrect && <p>Não foi dessa vez Cavaleiro das Trevas</p>}
+          { questionSubmitted && isCorrect && <p>Parabéns você acertou!</p>}
+          { questionSubmitted && !isCorrect && <p>Não foi dessa vez</p>}
         </AlternativeForm>
       </Widget.Content>
     </Widget>
@@ -95,9 +94,9 @@ QuestionWidget.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   setSelectedAnswer: PropTypes.func.isRequired,
   hasQuestionSelected: PropTypes.bool.isRequired,
-  name: PropTypes.string.isRequired,
   isCorrect: PropTypes.bool.isRequired,
   questionSubmitted: PropTypes.bool.isRequired,
+  selectedAnswer: PropTypes.number.isRequired,
 };
 
 export default QuestionWidget;

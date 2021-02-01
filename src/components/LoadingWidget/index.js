@@ -8,7 +8,7 @@ function LoadingWidget() {
         <h3>Carregando...</h3>
       </Widget.Header>
       <Widget.Content>
-        <p>Decifrando os enigmas do Charada</p>
+        <p>Carregando suas perguntas</p>
       </Widget.Content>
     </Widget>
   );
